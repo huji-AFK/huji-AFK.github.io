@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    .box {
+      width: 400px;
+      margin: 50px auto;
+      display: flex;
+      font-size: 25px;
+      line-height: 40px;
+
+    }
+
+    .qs {
+      width: 250px;
+      height: 40px;
+      color: rgb(69, 151, 228);
+      text-align: center;
+    }
+
+    .btns {
+
+      text-align: center;
+    }
+
+    .btns button {
+      width: 120px;
+      height: 35px;
+      margin: 0 50px;
+    }
+  </style>
+
+</head>
+
+<body>
+  <h2>随机点名</h2>
+  <div class="box">
+    <span>名字是：</span>
+    <div class="qs">这里显示姓名</div>
+  </div>
+  <div class="btns">
+    <button class="start">开始</button>
+    <button class="end">结束</button>
+  </div>
+  <script>
+    let zi = 0
+    let shu = 0
+    const arr = ['牛子皓', '胡敬彪', '宋章祺', '司俊鹏', '洪承信']
+    const qs = document.querySelector('.qs')
+    const start = document.querySelector('.start')
+    const end = document.querySelector('.end')
+    start.addEventListener('click', function () {
+      zi = setInterval(function () {
+        shu = parseInt(Math.random() * arr.length)
+        qs.innerHTML = arr[shu]
+      }, 35)
+      if (arr.length === 1) {
+        start.disabled = end.disabled = true
+      }
+    })
+    end.addEventListener('click', function () {
+      clearInterval(zi)
+      arr.splice(shu, 1)
+    })
+
+
+  </script>
+</body>
